@@ -6,6 +6,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { Bars3BottomRightIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 import Link from "../components/link"
+import Nav from "../components/nav";
 import '../styles/global.css'
 
 
@@ -47,40 +48,67 @@ export default function Home({ Component, pageProps }) {
 			
 			{/* <!-- Start block --> */}
 			<Popover>
-				<header className="fixed w-full">
-					<nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
-						<div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
-							<Link href="/" className="flex items-center">
-								<img src={""} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
-								<span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">CITAD</span>
-							</Link>
-							<div className="flex items-center lg:order-2">
-								<button type="button" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</button>
-								<a href="https://themesberg.com/product/tailwind-css/landing-page" className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Get PWA</a>
-								<Popover.Button className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
-									<span className="sr-only">
-										Open main menu
-									</span>
-									{/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-										<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
-									</svg> */}
-									<Bars3BottomRightIcon className="h-6 w-6" aria-hidden="true"/>
-								</Popover.Button>
+				<section className="relative z-10">
+					<header className="fixed w-full">
+						<nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
+							<div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
+								<Link href="/" className="flex items-center group">
+									<img src={""} className="h-6 mr-3 sm:h-9" alt="Landwind Logo" />
+									<span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">CITAD</span>
+								</Link>
+								<div className="flex items-center lg:order-2">
+									<button type="button" className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800">Log in</button>
+									<a href="https://themesberg.com/product/tailwind-css/landing-page" className="text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 sm:mr-2 lg:mr-0 dark:bg-purple-600 dark:hover:bg-purple-700 focus:outline-none dark:focus:ring-purple-800">Get PWA</a>
+									<Popover.Button className="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
+										<span className="sr-only">
+											Open main menu
+										</span>
+										{/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+											<path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5M12 17.25h8.25" />
+										</svg> */}
+										<Bars3BottomRightIcon className="h-6 w-6" aria-hidden="true"/>
+									</Popover.Button>
+								</div>
+								<div className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
+									<ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
+										{[
+											{
+												href: "/",
+												title: 'Home'
+											},
+											{
+												href: "/abgdh",
+												title: 'About us'
+											},
+											{
+												href: "/bknkhk",
+												title: 'Publications'
+											},
+											{
+												href: "/cjkni",
+												title: 'COVID-19'
+											},
+											// {
+											// 	href: "/d",
+											// 	title: 'Activities'
+											// },
+											// {
+											// 	href: "/e",
+											// 	title: 'Resources'
+											// },
+											// {
+											// 	href: "/f",
+											// 	title: 'Contact us'
+											// },
+										].map(navigation => (
+											<Nav key={navigation.href} {...navigation}/>
+										))}
+									</ul>
+								</div>
 							</div>
-							<div className="items-center justify-between hidden w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-								<ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-									<li><Link href="/" className="block py-2 pl-3 pr-4 text-white bg-purple-700 rounded lg:bg-transparent lg:text-purple-700 lg:p-0 dark:text-white" aria-current="page">Home</Link></li>
-									<li><Link href="/dashboard" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">About us</Link></li>
-									<li><Link href="/logbooks" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Publications</Link></li>
-									<li><Link href="/qcaps" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">COVID-19</Link></li>
-									<li><Link href="/qcaps" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Activities</Link></li>
-									<li><Link href="/qcaps" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Resources</Link></li>
-									<li><Link href="/qcaps" className="block py-2 pl-3 pr-4 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-purple-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700">Contact us</Link></li>
-								</ul>
-							</div>
-						</div>
-					</nav>
-				</header>
+						</nav>
+					</header>
+				</section>
 
 				<Transition
 					as={Fragment}

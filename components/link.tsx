@@ -7,7 +7,7 @@ type LinkProps = {
 	activeClassName?: string
 	inactiveClassName?: string
 	className?: string
-	children: string
+	children: ReactElement
 	rest?: object
 }
 
@@ -24,6 +24,8 @@ function Link({
 
 	let currentClassName = className;
 	let isActive = router.pathname === href;
+	console.log(router.pathname, href);
+	
 	if (isActive) {
 		currentClassName += ` ${activeClassName}`;
 	} else {
